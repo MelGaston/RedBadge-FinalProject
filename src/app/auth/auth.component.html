@@ -1,3 +1,34 @@
-<p>
-  auth works!
-</p>
+<h2>{{title}}</h2>
+
+<div>
+  <form id = "login" (submit) = "sendLogin(usernameli.value, passwordli.value); false; usernameli.value = ''; passwordli.value = ''">
+    <label>Username: </label>
+    <input #usernameli type = "text" placeholder = "BobbyG" />
+    <label>Password: </label>
+    <input #passwordli type = "password" placeholder = "*******" />
+    <button type = "submit">Submit!</button>
+  </form>
+
+  <form  id = "signup" style = "display: none" (submit) = "sendSignup(firstName.value, lastName.value, email.value, usernamesu.value, passwordsu.value, confirmPassword.value); false;
+  firstName.value = ''; lastName.value = ''; email.value = ''; usernamesu.value = ''; passwordsu.value = ''; confirmPassword.value = ''">
+    <label>First Name: </label>
+    <input #firstName type = "text" placeholder = "Jane" />
+    <label>Last Name: </label>
+    <input #lastName type = "text" placeholder = "Doe" />
+    <label>Email: </label>
+    <input #email type = "email" placeholder = "JaneDoe@gmail.com" />
+    <label>Username: </label>
+    <input #usernamesu type = "text" placeholder = "JDoe97" />
+    <label>Password: </label>
+    <input #passwordsu type = "password" placeholder = "*********" />
+    <label>Confirm Password: </label>
+    <input #confirmPassword type = "password" placeholder=  "*********" />
+    <button type = "submit">Submit!</button>
+  </form>
+  <button type = "button" (click) = "toggleView()">{{buttonTitle}}</button>
+</div>
+
+<div id = "warningDiv" style = "display: none">
+  <span id = "warning"></span>
+  <button (click) = "hideWarning()">OKAY</button>
+</div>
