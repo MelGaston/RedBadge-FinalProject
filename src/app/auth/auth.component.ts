@@ -37,9 +37,14 @@ export class AuthComponent implements OnInit {
     }
   }
 
-  sendLogin(username: string, password: string): void{
+  sendLogin(username: string, password: string): any{
     event.preventDefault();
-    console.log(username, password);
+    if(username == "" || password == ""){
+      document.getElementById("warningDiv").style.display = "block";
+      document.getElementById("warning").innerText  = "Please fill in all fields before trying to log in. Thanks! 😀";
+      return
+    }
+    this.authService.loginFetch(username, password);
   }
 
   sendSignup(firstName: string, lastName: string, email: string, username:string, password: string, confirmPassword: string): any {
@@ -58,7 +63,7 @@ export class AuthComponent implements OnInit {
       warning.innerText = "Please fill all fields before submitting";
       return
     }
-    console.log(firstName);
+    this.authService.signupFetch(firstName, lastName, email, username, password);
   }
 
   hideWarning(){
