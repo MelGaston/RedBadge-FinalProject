@@ -1,8 +1,10 @@
 export interface User{
-    username: string,
-    firstName: string,
-    lastName: string,
-    passwordhash: string,
-    email: string,
-    adminStatus: boolean
+    user: {
+        username: string,
+        firstName: string,
+        lastName: string,
+        password: string,
+        email: string,
+        adminStatus: boolean
+    }
 }
