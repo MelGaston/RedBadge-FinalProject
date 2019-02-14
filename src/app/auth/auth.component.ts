@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import {AuthService} from "../services/auth.service";
+import {User} from "../models/user.model"
+import {UserLogin} from "../models/userLogin";
 
 @Component({
   selector: 'app-auth',
@@ -12,11 +14,16 @@ export class AuthComponent implements OnInit {
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
+    this.setSessionToken()
   }
 
   title: string = "Login"
   buttonTitle: string = "SignUp!"
   bool: boolean = true;
+
+  setSessionToken(): void{
+    sessionStorage.setItem("token", "")
+  }
 
   toggleView() {
     this.bool = !this.bool;
@@ -37,9 +44,21 @@ export class AuthComponent implements OnInit {
     }
   }
 
-  sendLogin(username: string, password: string): void{
+  sendLogin(username: string, password: string): any{
     event.preventDefault();
-    console.log(username, password);
+    if(username == "" || password == ""){
+      document.getElementById("warningDiv").style.display = "block";
+      document.getElementById("warning").innerText  = "Please fill in all fields before trying to log in. Thanks! 😀";
+      return
+    }
+    let user: UserLogin = {
+      user:{
+        username: username,
+        password: password
+      }
+    }
+    this.authService.loginFetch(user).subscribe(data => sessionStorage.setItem("token", data.sessionToken));
+    console.log("sessionToken token", sessionStorage.getItem("token"));
   }
 
   sendSignup(firstName: string, lastName: string, email: string, username:string, password: string, confirmPassword: string): any {
@@ -47,6 +66,16 @@ export class AuthComponent implements OnInit {
 
     let warningDiv = document.getElementById("warningDiv");
     let warning = document.getElementById("warning");
+    let user: User = {
+      user:{
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        username: username,
+        password: password,
+        adminStatus: false
+      }
+    }
 
     if(password != confirmPassword){
       warningDiv.style.display = "block";
@@ -58,7 +87,8 @@ export class AuthComponent implements OnInit {
       warning.innerText = "Please fill all fields before submitting";
       return
     }
-    console.log(firstName);
+    this.authService.signupFetch(user).subscribe(data => sessionStorage.setItem("token", data.sessionToken));
+    console.log("sessionToken token", sessionStorage.getItem("token"));
   }
 
   hideWarning(){
