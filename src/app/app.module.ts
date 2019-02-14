@@ -14,6 +14,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import {AuthService} from "./services/auth.service"
 import { BevCardService } from './services/bev-card.service';
 import {CommentsService} from "./services/comments.service";
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import {CommentsService} from "./services/comments.service";
     TeaComponent,
     MiscBevComponent,
     NavbarComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
