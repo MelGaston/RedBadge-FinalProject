@@ -23,6 +23,7 @@ export class AuthComponent implements OnInit {
 
   setSessionToken(): void{
     sessionStorage.setItem("token", "")
+    sessionStorage.setItem("adminStatus", null)
   }
 
   toggleView() {
@@ -57,7 +58,10 @@ export class AuthComponent implements OnInit {
         password: password
       }
     }
-    this.authService.loginFetch(user).subscribe(data => sessionStorage.setItem("token", data.sessionToken));
+    this.authService.loginFetch(user)
+    .subscribe(data => {
+      sessionStorage.setItem("token", data.sessionToken);
+      sessionStorage.setItem("adminStatus", data.user.adminStatus)})
     console.log("sessionToken token", sessionStorage.getItem("token"));
   }
 
@@ -87,8 +91,15 @@ export class AuthComponent implements OnInit {
       warning.innerText = "Please fill all fields before submitting";
       return
     }
-    this.authService.signupFetch(user).subscribe(data => sessionStorage.setItem("token", data.sessionToken));
+    this.authService.signupFetch(user)
+      .subscribe(data => {
+        sessionStorage.setItem("token", data.sessionToken);
+        sessionStorage.setItem("adminStatus", data.user.adminStatus);
+        console.log(data);
+  });
+
     console.log("sessionToken token", sessionStorage.getItem("token"));
+    console.log("adminStatus", sessionStorage.getItem("adminStatus"));
   }
 
   hideWarning(){
