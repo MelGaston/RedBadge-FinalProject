@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import {AuthService} from "../services/auth.service";
 import {User} from "../models/user.model"
@@ -11,7 +12,7 @@ import {UserLogin} from "../models/userLogin";
 })
 export class AuthComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.setSessionToken()
@@ -57,8 +58,11 @@ export class AuthComponent implements OnInit {
         password: password
       }
     }
-    this.authService.loginFetch(user).subscribe(data => sessionStorage.setItem("token", data.sessionToken));
-    console.log("sessionToken token", sessionStorage.getItem("token"));
+    this.authService.loginFetch(user)
+    .subscribe(data => {
+      sessionStorage.setItem("token", data.sessionToken)
+      this.goHome();
+    })
   }
 
   sendSignup(firstName: string, lastName: string, email: string, username:string, password: string, confirmPassword: string): any {
@@ -87,13 +91,23 @@ export class AuthComponent implements OnInit {
       warning.innerText = "Please fill all fields before submitting";
       return
     }
-    this.authService.signupFetch(user).subscribe(data => sessionStorage.setItem("token", data.sessionToken));
+    this.authService.signupFetch(user).subscribe(data => {
+      sessionStorage.setItem("token", data.sessionToken);
+      this.goHome();
+    });
     console.log("sessionToken token", sessionStorage.getItem("token"));
   }
 
   hideWarning(){
     document.getElementById("warningDiv").style.display = "none";
     document.getElementById("warning").innerText  = "";
+  }
+
+  goHome() {
+    if(sessionStorage.getItem("token") !== "") {
+      console.log(sessionStorage.getItem("token"));
+      this.router.navigate(['/home']);
+    }
   }
 
 }
