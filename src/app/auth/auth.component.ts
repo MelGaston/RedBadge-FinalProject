@@ -68,9 +68,10 @@ export class AuthComponent implements OnInit {
       sessionStorage.setItem("user_id", data.user.id);
       sessionStorage.setItem("username", data.user.username);
       console.log(data);
+      this.goHome();
     })
     console.log("sessionToken token", sessionStorage.getItem("token"));
-    this.goHome();
+    
   }
 
   sendSignup(firstName: string, lastName: string, email: string, username:string, password: string, confirmPassword: string): any {
@@ -104,7 +105,9 @@ export class AuthComponent implements OnInit {
         sessionStorage.setItem("token", data.sessionToken);
         sessionStorage.setItem("adminStatus", data.user.adminStatus);
         console.log(data);
-        this.goHome();
+        setTimeout(() => {
+          this.goHome();
+        }, 5000)
   });
     console.log("sessionToken token", sessionStorage.getItem("token"));
     console.log("adminStatus", sessionStorage.getItem("adminStatus"));
