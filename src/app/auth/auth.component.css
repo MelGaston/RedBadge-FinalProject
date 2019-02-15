@@ -1,0 +1,19 @@
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    width:60vw;
+    padding:5vh;
+    text-align: center;
+    border-radius: 0.25rem;
+    margin:auto;
+    background-color: #fefefe;
+}
+
+.formContainer button {
+    width:100%;
+    margin:2vh 0;
+}
+
+.mat-form-field {
+    display: block;
+}

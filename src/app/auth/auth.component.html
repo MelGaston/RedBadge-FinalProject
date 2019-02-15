@@ -1,31 +1,44 @@
-<h2>{{title}}</h2>
+<div class="container" id="authContainer">
+  <div class="formContainer" id = "login" layout-align="center center">
+    <h2>{{title}}</h2>
+    <form (submit) = "sendLogin(usernameli.value, passwordli.value); false; usernameli.value = ''; passwordli.value = ''">
+      <mat-form-field>
+        <input matInput #usernameli type = "text" placeholder = "Username" />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput #passwordli type = "password" placeholder = Password />
+      </mat-form-field>
+      <button type = "submit" mat-flat-button color="accent">Submit</button>
+    </form>
+    <button type = "button" (click) = "toggleView()" mat-flat-button color="primary">{{buttonTitle}}</button>
+  </div>
 
-<div>
-  <form id = "login" (submit) = "sendLogin(usernameli.value, passwordli.value); false; usernameli.value = ''; passwordli.value = ''">
-    <label>Username: </label>
-    <input #usernameli type = "text" placeholder = "BobbyG" />
-    <label>Password: </label>
-    <input #passwordli type = "password" placeholder = "*******" />
-    <button type = "submit">Submit!</button>
-  </form>
-
-  <form  id = "signup" style = "display: none" (submit) = "sendSignup(firstName.value, lastName.value, email.value, usernamesu.value, passwordsu.value, confirmPassword.value); false;
-  firstName.value = ''; lastName.value = ''; email.value = ''; usernamesu.value = ''; passwordsu.value = ''; confirmPassword.value = ''">
-    <label>First Name: </label>
-    <input #firstName type = "text" placeholder = "Jane" />
-    <label>Last Name: </label>
-    <input #lastName type = "text" placeholder = "Doe" />
-    <label>Email: </label>
-    <input #email type = "email" placeholder = "JaneDoe@gmail.com" />
-    <label>Username: </label>
-    <input #usernamesu type = "text" placeholder = "JDoe97" />
-    <label>Password: </label>
-    <input #passwordsu type = "password" placeholder = "*********" />
-    <label>Confirm Password: </label>
-    <input #confirmPassword type = "password" placeholder=  "*********" />
-    <button type = "submit">Submit!</button>
-  </form>
-  <button type = "button" (click) = "toggleView()">{{buttonTitle}}</button>
+  <div class="formContainer" id = "signup" style = "display: none" layout-align="center center">
+    <h2>{{title}}</h2>
+    <form (submit) = "sendSignup(firstName.value, lastName.value, email.value, usernamesu.value, passwordsu.value, confirmPassword.value); false;
+    firstName.value = ''; lastName.value = ''; email.value = ''; usernamesu.value = ''; passwordsu.value = ''; confirmPassword.value = ''">
+      <mat-form-field color="warn">
+        <input matInput #firstName type = "text" placeholder = "First Name" />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput #lastName type = "text" placeholder = "Last Name" />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput #email type = "email" placeholder = "Email" />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput #usernamesu type = "text" placeholder = "Username" />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput #passwordsu type = "password" placeholder = "Password" />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput #confirmPassword type = "password" placeholder = "Confirm Password" />
+      </mat-form-field>
+      <button type="submit" mat-flat-button color="accent">Submit</button>
+    </form>
+    <button type = "button" (click) = "toggleView()" mat-flat-button color="primary">{{buttonTitle}}</button>
+  </div>
 </div>
 
 <div id = "warningDiv" style = "display: none">
