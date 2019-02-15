@@ -19,7 +19,7 @@ export class AuthComponent implements OnInit {
   }
 
   title: string = "Login"
-  buttonTitle: string = "SignUp!"
+  buttonTitle: string = "Sign Up"
   bool: boolean = true;
 
   setSessionToken(): void{
@@ -36,12 +36,12 @@ export class AuthComponent implements OnInit {
       login.style.display = "block";
       signup.style.display = "none";
       this.title = "Login"
-      this.buttonTitle = "SignUp!"
+      this.buttonTitle = "Sign Up"
     } else {
       login.style.display = "none";
       signup.style.display = "block";
-      this.title = "Signup"
-      this.buttonTitle = "Login!"
+      this.title = "Sign Up"
+      this.buttonTitle = "Login"
     }
   }
 

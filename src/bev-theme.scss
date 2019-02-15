@@ -1,0 +1,11 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$bev-app-primary: mat-palette($mat-amber, 500);
+$bev-app-accent: mat-palette($mat-indigo, 500);
+$bev-app-warn: mat-palette($mat-cyan, A400);
+
+$bev-app-theme: mat-light-theme($bev-app-primary, $bev-app-accent, $bev-app-warn);
+
+@include angular-material-theme($bev-app-theme);
