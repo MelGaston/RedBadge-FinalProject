@@ -31,7 +31,7 @@ export class AuthService {
     private http: HttpClient
   ) { }
 
-  loginFetch(user: UserLogin): any{
+  loginFetch(user: UserLogin): any {
     return this.http.post<User>(`${this.baseURL}auth/signin`, user, httpOptions).pipe(
       catchError(this.handleError("loginFetch")),
       tap(user => {
@@ -49,5 +49,3 @@ export class AuthService {
     )
   }
 }
-
-

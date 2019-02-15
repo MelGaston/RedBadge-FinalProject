@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import {AuthService} from "../services/auth.service";
 import {User} from "../models/user.model"
@@ -11,7 +12,7 @@ import {UserLogin} from "../models/userLogin";
 })
 export class AuthComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.setSessionToken()
@@ -24,6 +25,8 @@ export class AuthComponent implements OnInit {
   setSessionToken(): void{
     sessionStorage.setItem("token", "")
     sessionStorage.setItem("adminStatus", null)
+    sessionStorage.setItem("user_id", null)
+    sessionStorage.setItem("username", null)
   }
 
   toggleView() {
@@ -61,8 +64,13 @@ export class AuthComponent implements OnInit {
     this.authService.loginFetch(user)
     .subscribe(data => {
       sessionStorage.setItem("token", data.sessionToken);
-      sessionStorage.setItem("adminStatus", data.user.adminStatus)})
+      sessionStorage.setItem("adminStatus", data.user.adminStatus);
+      sessionStorage.setItem("user_id", data.user.id);
+      sessionStorage.setItem("username", data.user.username);
+      console.log(data);
+    })
     console.log("sessionToken token", sessionStorage.getItem("token"));
+    this.goHome();
   }
 
   sendSignup(firstName: string, lastName: string, email: string, username:string, password: string, confirmPassword: string): any {
@@ -96,8 +104,8 @@ export class AuthComponent implements OnInit {
         sessionStorage.setItem("token", data.sessionToken);
         sessionStorage.setItem("adminStatus", data.user.adminStatus);
         console.log(data);
+        this.goHome();
   });
-
     console.log("sessionToken token", sessionStorage.getItem("token"));
     console.log("adminStatus", sessionStorage.getItem("adminStatus"));
   }
@@ -105,6 +113,13 @@ export class AuthComponent implements OnInit {
   hideWarning(){
     document.getElementById("warningDiv").style.display = "none";
     document.getElementById("warning").innerText  = "";
+  }
+
+  goHome() {
+    if(sessionStorage.getItem("token") !== "") {
+      console.log(sessionStorage.getItem("token"));
+      this.router.navigate(['/home']);
+    }
   }
 
 }

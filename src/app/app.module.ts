@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,10 +11,13 @@ import { CoffeeComponent } from './comments/coffee/coffee.component';
 import { TeaComponent } from './comments/tea/tea.component';
 import { MiscBevComponent } from './comments/misc-bev/misc-bev.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { CommentsComponent } from './comments/comments.component';
+import { MaterialModule } from './material-module';
 
-import {AuthService} from "./services/auth.service"
+import { AuthService } from "./services/auth.service"
 import { BevCardService } from './services/bev-card.service';
-import {CommentsService} from "./services/comments.service";
+import { CommentsService } from "./services/comments.service";
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -24,11 +28,15 @@ import {CommentsService} from "./services/comments.service";
     TeaComponent,
     MiscBevComponent,
     NavbarComponent,
+    HomeComponent,
+    CommentsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MaterialModule,
+    BrowserAnimationsModule
   ],
   providers: [AuthService, BevCardService, CommentsService, HttpClient],
   bootstrap: [AppComponent]

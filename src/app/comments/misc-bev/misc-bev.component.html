@@ -1,12 +1,22 @@
 <div>
-  <app-navbar></app-navbar>
-  <nav>
-    <a>Coffee</a>
-    <a>Tea</a>
-    <a>Misc. Hot Beverage</a>
-  </nav>
+  <h1>Misc</h1>
   <div>
-    comments will go here
+    Comments will eventually go here!
   </div>
-  <input type = "textarea" />
+  <div>
+    Comments will eventually go here!
+  </div>
+  <div>
+    Comments will eventually go here!
+  </div>
+  <div>
+    Comments will eventually go here!
+  </div>
+  <div>
+    <h3>Comments will go here</h3>
+  </div>
+  <form>
+    <input #miscComment type = "textarea" placeholder = "Place your encouraging comments about misc hot beverages here!"/>
+    <button type = "button" (click) = "sendMiscFetch(miscComment.value); miscComment.value = ''">Submit Comment!</button>
+  </form>
 </div>

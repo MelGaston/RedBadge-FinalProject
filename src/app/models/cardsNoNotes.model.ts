@@ -1,4 +1,4 @@
-export interface Cards{
+export interface CardsNoNotes{
     carddata: {
         bevName: string,
         temp: number,
@@ -6,7 +6,6 @@ export interface Cards{
         servingSize: string,
         ingredients: string,
         flavorProfile: string,
-        notes: string,
         type: string
     }
 }
