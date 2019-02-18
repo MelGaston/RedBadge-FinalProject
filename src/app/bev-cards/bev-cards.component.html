@@ -4,33 +4,6 @@
 
     <h2>My Bevs</h2>
 
-    <form (submit) = "sendCardPost(name.value, temp.value, time.value, servingSize.value, ingredients.value, flavor.value, type.value, notes.value); false; name.value = ''; temp.value = ''; time.value = ''; servingSize.value = ''; ingredients.value = ''; flavor.value = ''; type.value = ''; notes.value = '';">
-        <label>Name of Beverage: </label>
-        <input required #name/>
-        <select #type>
-            <option value = "" disabled selected>Select type of beverage</option>
-            <option value = "Coffee">Coffee</option>
-            <option value = "Tea">Tea</option>
-            <option value = "Misc.">Misc.</option>
-        </select>
-        <label>Prep Temp: </label>
-        <input required #temp type = "number"/>
-        <label>Prep Time: </label>              <!--Please add a component after temp and time for the UI. Thanks!-->
-        <input required #time type = "number"/>
-        <select #servingSize>
-            <option value = "" disabled selected hidden>Serving Size</option>
-            <option value = "8 oz">8 oz</option>
-            <option value = "12 oz">12 oz</option>
-            <option value = "16 oz">16 oz</option>
-            <option value = "20 oz">20 oz</option>
-        </select>
-        <label>Ingredients: </label>
-        <input required type = "textarea" #ingredients/>
-        <label>Flavor profile: </label>
-        <input required #flavor/>
-        <label>Additional Notes: </label>
-        <input type = "textarea" #notes/>
-        <button type = "submit">Save your hot bevs!</button>
-    </form>
+    <button mat-flat-button color="accent" (click)="openModal()">+ Add To My List</button>
 
 </div>
