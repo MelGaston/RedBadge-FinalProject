@@ -17,7 +17,7 @@ export class TeaComponent implements OnInit {
   }
 
   sendTeaGet(){
-    this.commentsService.commentsGetFetch().subscribe(data => console.log(data.comment[0].comment))
+    this.commentsService.commentsGetFetch().subscribe(data => console.log(data))
   }
 
   sendTeaFetch(comment: string): any{
