@@ -9,7 +9,7 @@ import {CommentsService} from "../../services/comments.service";
   styleUrls: ['./misc-bev.component.css']
 })
 export class MiscBevComponent implements OnInit {
-
+  private commentsArr = []
   constructor(private commentsService: CommentsService) { }
 
   ngOnInit() {
@@ -17,7 +17,15 @@ export class MiscBevComponent implements OnInit {
   }
 
   sendMiscGet(){
-    this.commentsService.commentsGetFetch().subscribe(data => console.log(data))
+    this.commentsService.commentsGetFetch().subscribe(data => {
+      let i = 0;
+      while(i < data.comment.length){
+        if(data.comment[i].typeOf == "Misc"){
+          this.commentsArr.push(data.comment[i])
+        }
+        i++;
+      }
+    })
   }
 
   sendMiscFetch(comment: string): any{

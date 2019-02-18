@@ -10,7 +10,8 @@ import {CardsNoNotes} from "../models/cardsNoNotes.model";
   styleUrls: ['./bev-cards.component.css']
 })
 export class BevCardsComponent implements OnInit {
-
+  private cardArr = []
+  private cardId: number;
   constructor(private bevCardService: BevCardService) { }
 
   ngOnInit() {
@@ -18,7 +19,10 @@ export class BevCardsComponent implements OnInit {
   }
 
   sendCardsGet(): any{
-    this.bevCardService.getCardFetch().subscribe(data => console.log(data))
+    this.bevCardService.getCardFetch().subscribe(data => {
+      this.cardArr = data.card;
+      console.log(this.cardArr);
+    })
   }
 
   sendCardPost(name: string, temp: number, time: number, servingSize: string, ingredients: string, flavor: string, type: string, notes?: string){
@@ -52,5 +56,20 @@ export class BevCardsComponent implements OnInit {
     }
     
     this.bevCardService.createCardFetch(card).subscribe(data => console.log(data))
+  }
+
+  deleteConfirmation(cardId?: number): void{
+    if(cardId){
+      this.cardId = cardId
+    }
+    if(document.getElementById("deleteConfirmation").style.display == "none"){
+      document.getElementById("deleteConfirmation").style.display = "block"
+    } else {
+      document.getElementById("deleteConfirmation").style.display = "none"
+    }
+  }
+
+  sendDeleteFetch(cardId: number): void{
+    return this.bevCardService.deleteCard(cardId).subscribe(console.log("Success"));
   }
 }

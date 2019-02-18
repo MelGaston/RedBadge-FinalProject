@@ -25,8 +25,6 @@ export class AuthComponent implements OnInit {
   setSessionToken(): void{
     sessionStorage.setItem("token", "")
     sessionStorage.setItem("adminStatus", null)
-    sessionStorage.setItem("user_id", null)
-    sessionStorage.setItem("username", null)
   }
 
   toggleView() {
@@ -65,8 +63,6 @@ export class AuthComponent implements OnInit {
     .subscribe(data => {
       sessionStorage.setItem("token", data.sessionToken);
       sessionStorage.setItem("adminStatus", data.user.adminStatus);
-      sessionStorage.setItem("user_id", data.user.id);
-      sessionStorage.setItem("username", data.user.username);
       console.log(data);
       this.goHome();
     })

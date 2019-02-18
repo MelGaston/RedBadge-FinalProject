@@ -9,7 +9,7 @@ import {CommentsService} from "../../services/comments.service";
   styleUrls: ['./coffee.component.css']
 })
 export class CoffeeComponent implements OnInit {
-
+  private commentsArr = []
   constructor(private commentsService: CommentsService) { }
 
   ngOnInit() {
@@ -17,7 +17,15 @@ export class CoffeeComponent implements OnInit {
   }
 
   sendCoffeeGet(){
-    this.commentsService.commentsGetFetch().subscribe(data => console.log(data))
+    this.commentsService.commentsGetFetch().subscribe(data => {
+      let i = 0
+      while(i < data.comment.length){
+        if(data.comment[i].typeOf == "Coffee"){
+          this.commentsArr.push(data.comment[i])
+        }
+        i++;
+      }
+    })
   }
 
   sendCoffeeFetch(comment: string): any{

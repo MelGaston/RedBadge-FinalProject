@@ -45,4 +45,10 @@ export class BevCardService {
       })
     )
   }
+  
+  deleteCard(cardId): any{
+    return this.http.delete<Cards>(`${this.baseURL}card/remove/${cardId}`, httpOptions).pipe(
+      catchError(this.handleError<Cards>("deleteCard"))
+    )
+  }
 }

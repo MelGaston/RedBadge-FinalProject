@@ -1,7 +1,10 @@
 <div id="teaComp" class="commentComp">
   <h1>Tea</h1>
-  <div>
-    Comments will eventually go here!
+  <div *ngFor = "let comment of commentsArr">
+    <h3>{{comment.username}}</h3>
+    <p>{{comment.comment}}</p>
+    <button type = "button">Edit</button>
+    <button type = "button">Delete</button>
   </div>
   <form>
     <input #teaComment type = "textarea" placeholder = "Place your encouraging comments about hot tea here!"/>
