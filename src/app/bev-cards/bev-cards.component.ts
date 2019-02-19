@@ -1,22 +1,59 @@
 import { Component, OnInit } from '@angular/core';
 
-import {BevCardService} from "../services/bev-card.service";
-import {Cards} from "../models/cards.model";
-import {CardsNoNotes} from "../models/cardsNoNotes.model";
+import { BevCardService } from "../services/bev-card.service";
+import { Cards } from "../models/cards.model";
+import { CardsNoNotes } from "../models/cardsNoNotes.model";
+
+import { MatDialog } from '@angular/material';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
+
+export interface BevType {
+  value: string;
+  viewValue: string;
+}
+
+export interface ServSize {
+  value: string;
+  viewValue: string;
+}
 
 @Component({
   selector: 'app-bev-cards',
   templateUrl: './bev-cards.component.html',
   styleUrls: ['./bev-cards.component.css']
 })
+
 export class BevCardsComponent implements OnInit {
   private cardArr = []
   private cardId: number;
-  constructor(private bevCardService: BevCardService) { }
+
+  beverages: BevType[] = [
+    {value: 'coffee', viewValue: 'Coffee'},
+    {value: 'tea', viewValue: 'Tea'},
+    {value: 'miscellaneous', viewValue: 'Other'}
+  ];
+
+  sizes: ServSize[] = [
+    {value: '8', viewValue: '8 oz.'},
+    {value: '12', viewValue: '12 oz.'},
+    {value: '16', viewValue: '16 oz.'},
+    {value: '20', viewValue: '20 oz.'}
+  ]
+
+  constructor(private bevCardService: BevCardService, public dialog: MatDialog, private modalService: NgbModal) { }
 
   ngOnInit() {
     this.sendCardsGet()
   }
+
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result;
+  }
+
+  // openModal() {
+  //   const dialogRef = this.dialog.open(ModalDialog);
+  // }
 
   sendCardsGet(): any{
     this.bevCardService.getCardFetch().subscribe(data => {
