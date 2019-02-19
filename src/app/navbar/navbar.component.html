@@ -1,4 +1,4 @@
-<div class="navbar">
+<div class="navbar" id="mobile">
   <button mat-icon-button [matMenuTriggerFor]="menu">
     <mat-icon>menu</mat-icon>
   </button>
@@ -20,4 +20,10 @@
       <span>Logout</span>
     </button>
   </mat-menu>
+</div>
+<div class="navbar" id="desktop">
+  <button mat-flat-button routerLink="/home">Home</button>
+  <button mat-flat-button routerLink="/bevs">My Bevs</button>
+  <button mat-flat-button routerLink="/comments">Comments</button>
+  <button mat-flat-button (click)="logout()">Logout</button>
 </div>
