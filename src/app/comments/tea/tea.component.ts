@@ -10,9 +10,14 @@ import {CommentsService} from "../../services/comments.service";
 })
 export class TeaComponent implements OnInit {
   private commentsArr = [];
+  private userName;
+  private AdminStatus;
+  private commentId: number;
   constructor(private commentsService: CommentsService) { }
 
   ngOnInit() {
+    this.userName = sessionStorage.getItem("username")
+    this.AdminStatus = sessionStorage.getItem("adminStatus")
     this.sendTeaGet()
   }
 
@@ -45,5 +50,20 @@ export class TeaComponent implements OnInit {
         }
       }
       this.commentsService.commentsPostFetch(commentObj).subscribe(data => console.log(data))
+  }
+
+  deleteConfirm(commentId?: number): void{
+    if(commentId){
+      this.commentId = commentId
+    }
+    if(document.getElementById("deleteConfirm").style.display == "none"){
+      document.getElementById("deleteConfirm").style.display = "block"
+    } else {
+      document.getElementById("deleteConfirm").style.display = "none"
+    }
+  }
+
+  sendDeleteFetch(commentId: number): void{
+    return this.commentsService.deleteComment(commentId).subscribe(console.log("successfully deleted"))
   }
 }

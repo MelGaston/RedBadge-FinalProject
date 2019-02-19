@@ -42,4 +42,10 @@ private handleError<T> (operation = 'operation', result?: T) {
       })
     )
   }
+
+  deleteComment(commentId): any{
+    return this.http.delete<Comments>(`${this.baseURL}comment/remove/${commentId}`, httpOptions).pipe(
+      catchError(this.handleError<Comments>("deleteComment"))
+    )
+  }
 }
