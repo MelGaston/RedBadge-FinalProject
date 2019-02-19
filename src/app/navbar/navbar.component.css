@@ -8,6 +8,12 @@
     width:100vw;
 }
 
+.logo {
+    max-height:8.5vh;
+    float: left;
+    margin-left: 2vw;
+}
+
 #desktop button {
     padding:0.5vh 2vw;
     text-decoration:none;
@@ -42,5 +48,13 @@
 
     #desktop {
         display: none;
+    }
+
+    .logo {
+        max-height:5vh;
+    }
+
+    #mobile button {
+        margin-right:2vw;
     }
 }

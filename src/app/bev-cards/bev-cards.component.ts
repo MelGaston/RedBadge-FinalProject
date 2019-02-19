@@ -51,10 +51,6 @@ export class BevCardsComponent implements OnInit {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result;
   }
 
-  // openModal() {
-  //   const dialogRef = this.dialog.open(ModalDialog);
-  // }
-
   sendCardsGet(): any{
     this.bevCardService.getCardFetch().subscribe(data => {
       this.cardArr = data.card;
@@ -95,18 +91,19 @@ export class BevCardsComponent implements OnInit {
     this.bevCardService.createCardFetch(card).subscribe(data => console.log(data))
   }
 
-  deleteConfirmation(cardId?: number): void{
-    if(cardId){
-      this.cardId = cardId
-    }
-    if(document.getElementById("deleteConfirmation").style.display == "none"){
-      document.getElementById("deleteConfirmation").style.display = "block"
-    } else {
-      document.getElementById("deleteConfirmation").style.display = "none"
-    }
-  }
+  // deleteConfirmation(cardId?: number): void{
+  //   if(cardId){
+  //     this.cardId = cardId
+  //   }
+  //   if(document.getElementById("deleteConfirmation").style.display == "none"){
+  //     document.getElementById("deleteConfirmation").style.display = "block"
+  //   } else {
+  //     document.getElementById("deleteConfirmation").style.display = "none"
+  //   }
+  // }
 
   sendDeleteFetch(cardId: number): void{
+    console.log(cardId);
     return this.bevCardService.deleteCard(cardId).subscribe(console.log("Success"));
   }
 }

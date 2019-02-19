@@ -1,3 +1,14 @@
 .commentComp {
     margin:5vh;
 }
+
+textarea {
+    width:48%;
+    margin:1%;
+    float: left;
+}
+
+form button {
+    margin:1%;
+    padding:1vh 2vw;
+}
