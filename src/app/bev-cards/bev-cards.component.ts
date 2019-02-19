@@ -1,21 +1,38 @@
 import { Component, OnInit } from '@angular/core';
 
-import {BevCardService} from "../services/bev-card.service";
-import {Cards} from "../models/cards.model";
-import {CardsNoNotes} from "../models/cardsNoNotes.model";
+import { BevCardService } from "../services/bev-card.service";
+import { Cards } from "../models/cards.model";
+import { CardsNoNotes } from "../models/cardsNoNotes.model";
+
+import { MatDialog } from '@angular/material';
+
+export interface BevType {
+  value: string;
+  viewValue: string;
+}
+
+export interface ServSize {
+  value: string;
+  viewValue: string;
+}
 
 @Component({
   selector: 'app-bev-cards',
   templateUrl: './bev-cards.component.html',
   styleUrls: ['./bev-cards.component.css']
 })
+
 export class BevCardsComponent implements OnInit {
   private cardArr = []
   private cardId: number;
-  constructor(private bevCardService: BevCardService) { }
+  constructor(private bevCardService: BevCardService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.sendCardsGet()
+  }
+
+  openModal() {
+    const dialogRef = this.dialog.open(ModalDialog);
   }
 
   sendCardsGet(): any{
@@ -72,4 +89,24 @@ export class BevCardsComponent implements OnInit {
   sendDeleteFetch(cardId: number): void{
     return this.bevCardService.deleteCard(cardId).subscribe(console.log("Success"));
   }
+}
+
+@Component({
+  selector: 'modal-content',
+  templateUrl: 'modal-content.component.html',
+})
+
+export class ModalDialog {
+  beverages: BevType[] = [
+    {value: 'coffee', viewValue: 'Coffee'},
+    {value: 'tea', viewValue: 'Tea'},
+    {value: 'miscellaneous', viewValue: 'Other'}
+  ];
+
+  sizes: ServSize[] = [
+    {value: '8', viewValue: '8 oz.'},
+    {value: '12', viewValue: '12 oz.'},
+    {value: '16', viewValue: '16 oz.'},
+    {value: '20', viewValue: '20 oz.'}
+  ]
 }

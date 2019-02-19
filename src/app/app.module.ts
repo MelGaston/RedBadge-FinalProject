@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
-import { BevCardsComponent } from './bev-cards/bev-cards.component';
+import { BevCardsComponent, ModalDialog } from './bev-cards/bev-cards.component';
 import { CoffeeComponent } from './comments/coffee/coffee.component';
 import { TeaComponent } from './comments/tea/tea.component';
 import { MiscBevComponent } from './comments/misc-bev/misc-bev.component';
@@ -29,7 +29,8 @@ import { HomeComponent } from './home/home.component';
     MiscBevComponent,
     NavbarComponent,
     HomeComponent,
-    CommentsComponent
+    CommentsComponent,
+    ModalDialog
   ],
   imports: [
     BrowserModule,
@@ -38,6 +39,7 @@ import { HomeComponent } from './home/home.component';
     MaterialModule,
     BrowserAnimationsModule
   ],
+  entryComponents: [ModalDialog],
   providers: [AuthService, BevCardService, CommentsService, HttpClient],
   bootstrap: [AppComponent]
 })
