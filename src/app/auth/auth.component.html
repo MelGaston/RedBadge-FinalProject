@@ -17,7 +17,7 @@
     <h2>{{title}}</h2>
     <form (submit) = "sendSignup(firstName.value, lastName.value, email.value, usernamesu.value, passwordsu.value, confirmPassword.value); false;
     firstName.value = ''; lastName.value = ''; email.value = ''; usernamesu.value = ''; passwordsu.value = ''; confirmPassword.value = ''">
-      <mat-form-field color="warn">
+      <mat-form-field>
         <input matInput #firstName type = "text" placeholder = "First Name" />
       </mat-form-field>
       <mat-form-field>

@@ -3,11 +3,12 @@
   <div *ngFor = "let comment of commentsArr">
     <h3>{{comment.username}}</h3>
     <p>{{comment.comment}}</p>
-    <button type = "button">Edit</button>
-    <button type = "button">Delete</button>
+    <button type = "button" mat-flat-button color="accent">Edit</button>
+    <button type = "button" mat-flat-button color="warn">Delete</button>
   </div>
   <form>
-    <input #teaComment type = "textarea" placeholder = "Place your encouraging comments about hot tea here!"/>
-    <button type = "button" (click) = "sendTeaFetch(teaComment.value); teaComment.value = ''">Submit Comment!</button>
+    <h3>Do you have opinions about hot tea?</h3>
+    <textarea #teaComment type = "textarea" placeholder="Let the people know..."></textarea>
+    <button type = "button" (click) = "sendTeaFetch(teaComment.value); teaComment.value = ''" mat-flat-button color="accent">Submit</button>
   </form>
 </div>
