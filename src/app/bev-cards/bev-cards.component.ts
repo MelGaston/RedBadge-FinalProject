@@ -5,6 +5,8 @@ import { Cards } from "../models/cards.model";
 import { CardsNoNotes } from "../models/cardsNoNotes.model";
 
 import { MatDialog } from '@angular/material';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 
 export interface BevType {
   value: string;
@@ -25,15 +27,33 @@ export interface ServSize {
 export class BevCardsComponent implements OnInit {
   private cardArr = []
   private cardId: number;
-  constructor(private bevCardService: BevCardService, public dialog: MatDialog) { }
+
+  beverages: BevType[] = [
+    {value: 'coffee', viewValue: 'Coffee'},
+    {value: 'tea', viewValue: 'Tea'},
+    {value: 'miscellaneous', viewValue: 'Other'}
+  ];
+
+  sizes: ServSize[] = [
+    {value: '8', viewValue: '8 oz.'},
+    {value: '12', viewValue: '12 oz.'},
+    {value: '16', viewValue: '16 oz.'},
+    {value: '20', viewValue: '20 oz.'}
+  ]
+
+  constructor(private bevCardService: BevCardService, public dialog: MatDialog, private modalService: NgbModal) { }
 
   ngOnInit() {
     this.sendCardsGet()
   }
 
-  openModal() {
-    const dialogRef = this.dialog.open(ModalDialog);
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result;
   }
+
+  // openModal() {
+  //   const dialogRef = this.dialog.open(ModalDialog);
+  // }
 
   sendCardsGet(): any{
     this.bevCardService.getCardFetch().subscribe(data => {
@@ -89,24 +109,4 @@ export class BevCardsComponent implements OnInit {
   sendDeleteFetch(cardId: number): void{
     return this.bevCardService.deleteCard(cardId).subscribe(console.log("Success"));
   }
-}
-
-@Component({
-  selector: 'modal-content',
-  templateUrl: 'modal-content.component.html',
-})
-
-export class ModalDialog {
-  beverages: BevType[] = [
-    {value: 'coffee', viewValue: 'Coffee'},
-    {value: 'tea', viewValue: 'Tea'},
-    {value: 'miscellaneous', viewValue: 'Other'}
-  ];
-
-  sizes: ServSize[] = [
-    {value: '8', viewValue: '8 oz.'},
-    {value: '12', viewValue: '12 oz.'},
-    {value: '16', viewValue: '16 oz.'},
-    {value: '20', viewValue: '20 oz.'}
-  ]
 }

@@ -2,11 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
-import { BevCardsComponent, ModalDialog } from './bev-cards/bev-cards.component';
+import { BevCardsComponent } from './bev-cards/bev-cards.component';
 import { CoffeeComponent } from './comments/coffee/coffee.component';
 import { TeaComponent } from './comments/tea/tea.component';
 import { MiscBevComponent } from './comments/misc-bev/misc-bev.component';
@@ -30,16 +31,16 @@ import { HomeComponent } from './home/home.component';
     NavbarComponent,
     HomeComponent,
     CommentsComponent,
-    ModalDialog
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     MaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgbModule
   ],
-  entryComponents: [ModalDialog],
+  entryComponents: [],
   providers: [AuthService, BevCardService, CommentsService, HttpClient],
   bootstrap: [AppComponent]
 })
