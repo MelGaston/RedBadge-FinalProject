@@ -15,7 +15,7 @@ export class NavbarComponent implements OnInit {
 
   logout(): void {
     sessionStorage.setItem("token", "")
-    this.router.navigate(["/auth"]);
     location.reload();
+    this.router.navigate(["/auth"]);
   }
 }

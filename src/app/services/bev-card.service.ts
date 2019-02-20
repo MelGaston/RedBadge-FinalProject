@@ -30,7 +30,7 @@ export class BevCardService {
 
   createCardFetch(card: Cards | CardsNoNotes): any {
     return this.http.post<Cards | CardsNoNotes>(`${this.baseURL}card/create`, card, httpOptions).pipe(
-      catchError(this.handleError("createCardFetch")),
+      catchError(this.handleError<Cards | CardsNoNotes>("createCardFetch")),
       tap(data => {
         return data
       })
@@ -39,7 +39,7 @@ export class BevCardService {
 
   getCardFetch(): any {
     return this.http.get<Cards>(`${this.baseURL}card/mine`, httpOptions).pipe(
-      catchError(this.handleError("getCardFetch")),
+      catchError(this.handleError<Cards>("getCardFetch")),
       tap(data => {
         return data
       })
@@ -49,6 +49,13 @@ export class BevCardService {
   deleteCard(cardId): any{
     return this.http.delete<Cards>(`${this.baseURL}card/remove/${cardId}`, httpOptions).pipe(
       catchError(this.handleError<Cards>("deleteCard"))
+    )
+  }
+
+  updateCardFetch(card: Cards | CardsNoNotes, cardId): any{
+    console.log("card service update", card, cardId)
+    return this.http.put<Cards | CardsNoNotes>(`${this.baseURL}card/update/${cardId}`, card, httpOptions).pipe(
+      catchError(this.handleError<Cards | CardsNoNotes>("updateCardFetch"))
     )
   }
 }

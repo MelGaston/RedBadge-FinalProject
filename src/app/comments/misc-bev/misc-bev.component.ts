@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+
 import {Comments} from "../../models/comments.model";
 import {CommentsService} from "../../services/comments.service";
 
@@ -13,12 +15,37 @@ export class MiscBevComponent implements OnInit {
   private userName;
   private AdminStatus;
   private commentId;
-  constructor(private commentsService: CommentsService) { }
+  constructor(private commentsService: CommentsService, private modalService: NgbModal) { }
 
   ngOnInit() {
     this.userName = sessionStorage.getItem("username")
     this.AdminStatus = sessionStorage.getItem("adminStatus")
     this.sendMiscGet()
+  }
+
+  open(content?, commentId?: number){
+    if(content){
+      this.modalService.open(content, {ariaLabelledBy: "modal-basic-title"}).result;
+      console.log("edit pushed")
+      this.commentId = commentId
+      console.log(commentId, this.commentId);
+    } else {
+      this.modalService.dismissAll();
+    }
+  }
+
+  sendCommentUpdate(commentEdit){
+    event.preventDefault();
+    console.log("update pushed", commentEdit, this.commentId)
+    let commentObj: Comments = {
+      commentdata: {
+        username: sessionStorage.getItem("username"),
+        comment: commentEdit,
+        typeOf: "Misc",
+        votes: 0
+      }
+    }
+    this.commentsService.commentsUpdateFetch(commentObj, this.commentId).subscribe(data => console.log(data))
   }
 
   sendMiscGet(){

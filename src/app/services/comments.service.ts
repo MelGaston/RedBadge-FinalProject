@@ -34,6 +34,13 @@ private handleError<T> (operation = 'operation', result?: T) {
     )
   }
 
+  commentsUpdateFetch(comment: Comments, commentId: number): any{
+    console.log("service", comment, commentId)
+    return this.http.put<Comments>(`${this.baseURL}comment/update/${commentId}`, comment, httpOptions).pipe(
+      catchError(this.handleError("commentsUpdateFetch"))
+    )
+  }
+
   commentsGetFetch(): any{
     return this.http.get<Comments>(`${this.baseURL}comment/comments`, httpOptions).pipe(
       catchError(this.handleError("commentsGetFetch")),

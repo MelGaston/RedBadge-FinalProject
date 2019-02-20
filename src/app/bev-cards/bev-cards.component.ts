@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 import { BevCardService } from "../services/bev-card.service";
 import { Cards } from "../models/cards.model";
@@ -27,6 +28,18 @@ export interface ServSize {
 export class BevCardsComponent implements OnInit {
   private cardArr = []
   private cardId: number;
+  public modelTitle: string;
+  // public name: string;
+  // private _type: string;
+  // private temp: number;
+  // private time: number;
+  // private _servingSize: string;        trying to get two way binding to work so we can get the edit button to
+  // private _ingredients: string;        add the value of each card to the input fields of the model when edit is clicked
+  // private _flavor: string;
+  // private _notes: string;
+
+
+  //   @Input() name: any;
 
   beverages: BevType[] = [
     {value: 'coffee', viewValue: 'Coffee'},
@@ -47,13 +60,58 @@ export class BevCardsComponent implements OnInit {
     this.sendCardsGet()
   }
 
-  open(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result;
+  open(content?, cardId?: number) {
+    if(content){
+      this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result;
+
+      if(cardId){
+        this.modelTitle = "Edit Beverage"
+        document.getElementById("submitButton").style.display = "none";
+        document.getElementById("clickButton").style.display = "block";
+        this.cardId = cardId;
+      } else {
+        this.modelTitle = "Add to My Beverages";
+      }
+    } else {
+      this.modalService.dismissAll()
+    }
   }
 
-  // openModal() {
-  //   const dialogRef = this.dialog.open(ModalDialog);
-  // }
+  sendCardUpdate(cardId: number, bevName: string, temp: number, time: number, servingSize: string, ingredients: string, flavor: string, type: string, notes?: string): any{
+    console.log(cardId, bevName)
+    let card: Cards | CardsNoNotes;
+
+    if(notes){
+      card = {
+        carddata:{
+          bevName: bevName,
+          temp: temp,
+          prepTime: time,
+          servingSize: servingSize,
+          ingredients: ingredients,
+          flavorProfile: flavor,
+          notes: notes,
+          type: type
+        }
+      }
+    } else {
+      card = {
+        carddata:{
+          bevName: bevName,
+          temp: temp,
+          prepTime: time,
+          servingSize: servingSize,
+          ingredients: ingredients,
+          flavorProfile: flavor,
+          type: type
+        }
+      }
+    }
+
+    this.bevCardService.updateCardFetch(card, cardId).subscribe(data => {
+      console.log(data)
+    })
+  }
 
   sendCardsGet(): any{
     this.bevCardService.getCardFetch().subscribe(data => {

@@ -4,7 +4,7 @@
     <h3>{{comment.username}}</h3>
     <p>{{comment.comment}}</p>
     <div *ngIf = "this.AdminStatus == 'true' || userName == comment.username">
-        <button type = "button">Edit</button>
+        <button type = "button" (click) = "open(content, comment.id)">Edit</button>
         <button type = "button" (click) = "deleteConfirm(comment.id)">Delete</button>
       </div>
   </div>
@@ -13,6 +13,24 @@
     <button type = "button" (click) = "sendMiscFetch(miscComment.value); miscComment.value = ''">Submit Comment!</button>
   </form>
 </div>
+
+<ng-template #content let-modal>
+    <div class = "modal-header">
+      <h4 class = "modal-title" id = "modal-basic-title">Edit comment</h4>
+      <button type = "button" class = "close" aria-label = "Close" (click) = "modal.dismiss('Cross click')">
+        <span aria-hidden  = "true">&times;</span>
+      </button>
+    </div>
+    <div class = "modal-body">
+      <form (submit) = "sendCommentUpdate(commentEdit.value); false; open(); commentEdit.value = ''">
+        <label>Edit Message Here</label>
+        <input type = "textarea" #commentEdit/>
+        <div class = "modal-footer">
+          <button class = "btn btn-outline-dark" type = "submit">Update</button>
+        </div>
+      </form>
+    </div>
+  </ng-template>
 
 <div id = "deleteConfirm" style = "display: none">
     <p>Are you sure you want to delete this card?</p>
