@@ -14,7 +14,7 @@
             </button>
         </div>
         <div class="modal-body">
-            <form (submit) = "sendCardPost(name.value, temp.value, time.value, servingSize.value, ingredients.value, flavor.value, type.value, notes.value); false; name.value = ''; temp.value = ''; time.value = ''; servingSize.value = ''; ingredients.value = ''; flavor.value = ''; type.value = ''; notes.value = '';">
+            <form (submit) = "sendCardPost(name.value, temp.value, time.value, servingSize.value, ingredients.value, flavor.value, type.value, notes.value); false; name.value = ''; temp.value = ''; time.value = ''; servingSize.value = ''; ingredients.value = ''; flavor.value = ''; type.value = ''; notes.value = ''; modal.dismiss('Cross click');">
                 <label for="name">Beverage Name</label>
                 <input required id = "name" #name type="text"/><br/>  <!--[(ngModel)] = "name"-->
                 <label for="type">Type of Beverage</label>
@@ -48,23 +48,30 @@
         </div>
     </ng-template>
 
-    <div *ngFor = "let card of cardArr">
+    <div *ngFor = "let card of cardArr" class="cardContainer">
         <h4>{{card.bevName}}</h4>
-        <p>{{card.type}}</p>
-        <p>{{card.temp}} °F</p>
-        <p>{{card.prepTime}} minutes</p>
-        <p>{{card.servingSize}}</p>
-        <p>{{card.ingredients}}</p>
-        <p>{{card.flavorProfile}}</p>
-        <p>{{card.notes}}</p>
-        <button type = "button" (click) = "open(content, card.id)">Edit</button>
-        <button type = "button" (click) = "deleteConfirmation(card.id)">Delete</button>
+        <p><strong>Type of Beverage:</strong> {{card.type}}</p>
+        <p><strong>Temperature:</strong> {{card.temp}} °F</p>
+        <p><strong>Prep Time:</strong> {{card.prepTime}} Minutes</p>
+        <p><strong>Serving Size:</strong> {{card.servingSize}} oz.</p>
+        <p><strong>Ingredients:</strong> {{card.ingredients}}</p>
+        <p><strong>Flavor Profile:</strong> {{card.flavorProfile}}</p>
+        <p><strong>Additional Notes:</strong><br/>{{card.notes}}</p><br/>
+        <button type = "button" mat-flat-button color="accent">Edit</button>
+        <button type = "button" mat-flat-button color="warn" (click)="open(delete)">Delete</button>
+        
+        <ng-template #delete let-modal>
+            <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">Are you sure you want to delete {{card.bevName}}?</h4>
+                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-footer">
+                <button (click) = "modal.dismiss()">No</button>
+                <button cdk-focus-initial (click) = "sendDeleteFetch(card.id);modal.dismiss();">Yes</button>
+            </div>
+        </ng-template>
     </div>
-
-    <div id = "deleteConfirmation" style = "display: none">
-        <p>Are you sure you want to delete this card?</p>
-        <button (click) = "sendDeleteFetch(this.cardId); deleteConfirmation();">Yes</button>
-        <button (click) = "deleteConfirmation()">No</button>
-    </div>
-
+    
 </div>

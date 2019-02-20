@@ -9,8 +9,9 @@
       </div>
   </div>
   <form>
-    <input #coffeeComment type = "textarea" placeholder = "Place your encouraging comments about coffee here!"/>
-    <button type = "button" (click) = "sendCoffeeFetch(coffeeComment.value); coffeeComment.value = ''">Submit Comment!</button>
+    <h3>Do you have opinions about hot coffee?</h3>
+    <textarea #coffeeComment type = "textarea" placeholder="Let the people know..."></textarea>
+    <button type = "button" (click) = "sendCoffeeFetch(coffeeComment.value); coffeeComment.value = ''" mat-flat-button color="accent">Submit</button>
   </form>
 </div>
 

@@ -153,18 +153,19 @@ export class BevCardsComponent implements OnInit {
     this.bevCardService.createCardFetch(card).subscribe(data => console.log(data))
   }
 
-  deleteConfirmation(cardId?: number): void{
-    if(cardId){
-      this.cardId = cardId
-    }
-    if(document.getElementById("deleteConfirmation").style.display == "none"){
-      document.getElementById("deleteConfirmation").style.display = "block"
-    } else {
-      document.getElementById("deleteConfirmation").style.display = "none"
-    }
-  }
+  // deleteConfirmation(cardId?: number): void{
+  //   if(cardId){
+  //     this.cardId = cardId
+  //   }
+  //   if(document.getElementById("deleteConfirmation").style.display == "none"){
+  //     document.getElementById("deleteConfirmation").style.display = "block"
+  //   } else {
+  //     document.getElementById("deleteConfirmation").style.display = "none"
+  //   }
+  // }
 
   sendDeleteFetch(cardId: number): void{
+    console.log(cardId);
     return this.bevCardService.deleteCard(cardId).subscribe(console.log("Success"));
   }
 }

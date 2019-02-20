@@ -1,3 +1,24 @@
 .container {
-    margin: 5vh;
+    margin: 5vh auto;
+}
+
+.cardContainer {
+    background-color:#FFD967;
+    margin:5vh;
+    padding:5vh;
+    border-radius: 0.25rem;
+}
+
+.cardContainer button {
+    margin:1vh;
+}
+
+.cardContainer p {
+    width:48%;
+    float: left;
+}
+
+#deleteConfirmation p {
+    width: 100%;
+    margin: auto;
 }
