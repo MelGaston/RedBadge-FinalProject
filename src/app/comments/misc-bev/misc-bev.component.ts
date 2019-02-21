@@ -11,10 +11,10 @@ import {CommentsService} from "../../services/comments.service";
   styleUrls: ['./misc-bev.component.css']
 })
 export class MiscBevComponent implements OnInit {
-  private commentsArr = []
+  public commentsArr = []
   private userName;
   private AdminStatus;
-  private commentId;
+  public commentId;
   constructor(private commentsService: CommentsService, private modalService: NgbModal) { }
 
   ngOnInit() {

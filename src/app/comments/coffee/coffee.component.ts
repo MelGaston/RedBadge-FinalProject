@@ -11,10 +11,10 @@ import {CommentsService} from "../../services/comments.service";
   styleUrls: ['./coffee.component.css']
 })
 export class CoffeeComponent implements OnInit {
-  private commentsArr = []
+  public commentsArr = []
   private userName;
-  private AdminStatus
-  private commentId
+  private AdminStatus;
+  public commentId;
   constructor(private commentsService: CommentsService, private modalService: NgbModal) { }
 
   ngOnInit() {
