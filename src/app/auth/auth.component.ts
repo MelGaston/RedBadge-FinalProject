@@ -120,7 +120,7 @@ export class AuthComponent implements OnInit {
   goHome() {
     if(sessionStorage.getItem("token") !== "") {
       console.log(sessionStorage.getItem("token"));
-      this.router.navigate(['/bevs']);
+      this.router.navigate(['/home']);
     }
   }
 
