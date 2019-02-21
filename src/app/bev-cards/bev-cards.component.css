@@ -22,3 +22,18 @@
     width: 100%;
     margin: auto;
 }
+
+.buttonRow {
+    width:100%;
+    text-align: center;
+}
+
+#addButton {
+    display: inline-block;
+    vertical-align:top;
+    float: right;
+}
+
+h2 {
+    display: inline-block;
+}

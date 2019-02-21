@@ -4,7 +4,7 @@
 
     <h2 id = "test">My Hot Beverages</h2>
 
-    <button mat-flat-button color="accent" (click)="open(content)">+ Add To My List</button>
+    <button mat-flat-button color="accent" (click)="open(content)" id="addButton">+ Add To My List</button>
 
     <ng-template #content let-modal>
         <div class="modal-header">
@@ -47,7 +47,7 @@
             </form>
         </div>
     </ng-template>
-
+    
     <div *ngFor = "let card of cardArr" class="cardContainer">
         <h4>{{card.bevName}}</h4>
         <p><strong>Type of Beverage:</strong> {{card.type}}</p>
@@ -68,10 +68,9 @@
                 </button>
             </div>
             <div class="modal-footer">
-                <button (click) = "modal.dismiss()">No</button>
-                <button cdk-focus-initial (click) = "sendDeleteFetch(card.id);modal.dismiss();">Yes</button>
+                <button mat-flat-button color="accent" (click) = "modal.dismiss()">No</button>
+                <button cdk-focus-initial mat-flat-button color="warn" (click) = "sendDeleteFetch(card.id);modal.dismiss();">Yes</button>
             </div>
         </ng-template>
     </div>
-    
 </div>

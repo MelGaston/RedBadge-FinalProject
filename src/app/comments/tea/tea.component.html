@@ -1,6 +1,6 @@
 <div id="teaComp" class="commentComp">
-  <h1>Tea</h1>
-  <div *ngFor = "let comment of commentsArr">
+  <h2>Tea</h2>
+  <div *ngFor = "let comment of commentsArr" class="comment">
     <h3>{{comment.username}}</h3>
     <p>{{comment.comment}}</p>
     <div *ngIf = "this.AdminStatus == 'true' || userName == comment.username">
@@ -10,7 +10,7 @@
   </div>
   <form>
     <h3>Do you have opinions about hot tea?</h3>
-    <textarea #teaComment type = "textarea" placeholder="Let the people know..."></textarea>
+    <textarea class="addComment" #teaComment type = "textarea" placeholder="Let the people know..."></textarea>
     <button type = "button" (click) = "sendTeaFetch(teaComment.value); teaComment.value = ''" mat-flat-button color="accent">Submit</button>
   </form>
 </div>
@@ -18,7 +18,7 @@
 <ng-template #content let-modal>
   <div class = "modal-header">
     <h4 class = "modal-title" id = "modal-basic-title">Edit comment</h4>
-    <button type = "button" class = "close" aria-label = "Close" (click) = "modal.dismiss('Cross click')">
+    <button type = "button" class = "close" aria-label = "Close" (click) = "modal.dismiss()">
       <span aria-hidden  = "true">&times;</span>
     </button>
   </div>
@@ -27,7 +27,7 @@
       <label>Edit Message Here</label>
       <input type = "textarea" #commentEdit/>
       <div class = "modal-footer">
-        <button class = "btn btn-outline-dark" type = "submit">Update</button>
+        <button mat-flat-button color = "accent" type = "submit">Update</button>
       </div>
     </form>
   </div>
