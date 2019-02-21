@@ -1,47 +1,65 @@
-<div class="container" id="authContainer">
-  <div class="formContainer" id = "login" layout-align="center center">
-    <h2>{{title}}</h2>
-    <form (submit) = "sendLogin(usernameli.value, passwordli.value); false; usernameli.value = ''; passwordli.value = ''">
-      <mat-form-field>
-        <input matInput #usernameli type = "text" placeholder = "Username" />
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput #passwordli type = "password" placeholder = Password />
-      </mat-form-field>
-      <button type = "submit" mat-flat-button color="accent">Submit</button>
-    </form>
-    <button type = "button" (click) = "toggleView()" mat-flat-button color="primary">{{buttonTitle}}</button>
-  </div>
+<div class="page">
+  <div class="container">
+    <div id="homeContainer">
+      <h2 id="welcome">Welcome to Hot Bev Hub!</h2>
+        <p>
+          So you've made your way across the internet, and stumbled across our humble hub! 
+          We're glad you made it, and we hope you're ready to take your hot beverage organizational skills 
+          to the next level!<br/><br/>
+          Hot Bev Hub was designed to simply help people share and organize the methods which they use to procure
+          the best of the best Hot Bevs in the west!<br/><br/>
+          We aim to provide you with a user friendly utility which will allow you to keep track of your 
+          perfected hot beverage recipes, as well as to post commentary for others on the site to read, or comment on! 
+          So go ahead! Jump right in!
+        </p>
+      </div>
 
-  <div class="formContainer" id = "signup" style = "display: none" layout-align="center center">
-    <h2>{{title}}</h2>
-    <form (submit) = "sendSignup(firstName.value, lastName.value, email.value, usernamesu.value, passwordsu.value, confirmPassword.value); false;
-    firstName.value = ''; lastName.value = ''; email.value = ''; usernamesu.value = ''; passwordsu.value = ''; confirmPassword.value = ''">
-      <mat-form-field>
-        <input matInput #firstName type = "text" placeholder = "First Name" />
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput #lastName type = "text" placeholder = "Last Name" />
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput #email type = "email" placeholder = "Email" />
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput #usernamesu type = "text" placeholder = "Username" />
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput #passwordsu type = "password" placeholder = "Password" />
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput #confirmPassword type = "password" placeholder = "Confirm Password" />
-      </mat-form-field>
-      <button type="submit" mat-flat-button color="accent">Submit</button>
-    </form>
-    <button type = "button" (click) = "toggleView()" mat-flat-button color="primary">{{buttonTitle}}</button>
-  </div>
-</div>
+    <div id="authContainer">
+      <div class="formContainer" id = "login" layout-align="center center">
+        <h2>{{title}}</h2>
+        <form (submit) = "sendLogin(usernameli.value, passwordli.value); false; usernameli.value = ''; passwordli.value = ''">
+          <mat-form-field>
+            <input matInput #usernameli type = "text" placeholder = "Username" />
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput #passwordli type = "password" placeholder = Password />
+          </mat-form-field>
+          <button type = "submit" mat-flat-button color="primary">Submit</button>
+        </form>
+        <button type = "button" (click) = "toggleView()" mat-flat-button color="accent">{{buttonTitle}}</button>
+      </div>
 
-<div id = "warningDiv" style = "display: none">
-  <span id = "warning"></span>
-  <button (click) = "hideWarning()">OKAY</button>
+      <div class="formContainer" id = "signup" style = "display: none" layout-align="center center">
+        <h2>{{title}}</h2>
+        <form (submit) = "sendSignup(firstName.value, lastName.value, email.value, usernamesu.value, passwordsu.value, confirmPassword.value); false;
+        firstName.value = ''; lastName.value = ''; email.value = ''; usernamesu.value = ''; passwordsu.value = ''; confirmPassword.value = ''">
+          <mat-form-field>
+            <input matInput #firstName type = "text" placeholder = "First Name" />
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput #lastName type = "text" placeholder = "Last Name" />
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput #email type = "email" placeholder = "Email" />
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput #usernamesu type = "text" placeholder = "Username" />
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput #passwordsu type = "password" placeholder = "Password" />
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput #confirmPassword type = "password" placeholder = "Confirm Password" />
+          </mat-form-field>
+          <button type="submit" mat-flat-button color="primary">Submit</button>
+        </form>
+        <button type = "button" (click) = "toggleView()" mat-flat-button color="accent">{{buttonTitle}}</button>
+      </div>
+    </div>
+
+    <div id = "warningDiv" style = "display: none">
+      <span id = "warning"></span>
+      <button (click) = "hideWarning()">OKAY</button>
+    </div>
+  </div>
 </div>
