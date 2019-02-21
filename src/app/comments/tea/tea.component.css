@@ -2,6 +2,18 @@
     margin:5vh;
 }
 
+.comment {
+    background-color:#FFD967;
+    margin:5vh;
+    padding:5vh;
+    border-radius: 0.25rem;
+}
+
+.comment button {
+    display: block;
+    margin: 1vh;
+}
+
 form {
     text-align: center;
     width:80vw;
