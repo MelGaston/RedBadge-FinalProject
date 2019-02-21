@@ -8,7 +8,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "postinstall": "ng build --prod",
-    "start": "serve -s dist/hot-bev-hub"
+    "start": "serve -s dist/hotBevHub"
   },
   "private": true,
   "dependencies": {
