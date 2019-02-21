@@ -26,7 +26,7 @@ export interface ServSize {
 })
 
 export class BevCardsComponent implements OnInit {
-  private cardArr = []
+  public cardArr = []
   private cardId: number;
   public modelTitle: string;
   // public name: string;
