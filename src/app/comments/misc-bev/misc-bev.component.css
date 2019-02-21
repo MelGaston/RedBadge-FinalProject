@@ -2,13 +2,21 @@
     margin:5vh;
 }
 
-textarea {
-    width:48%;
-    margin:1%;
-    float: left;
+form {
+    text-align: center;
+    width:80vw;
+    margin: 5vh auto;
+    padding: 5vh 0;
+    border-top:2px solid #333;
+}
+
+.addComment {
+    width:60%;
+    margin:1% auto;
 }
 
 form button {
-    margin:1%;
+    width:60%;
+    margin:1% auto;
     padding:1vh 2vw;
 }

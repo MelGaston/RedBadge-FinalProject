@@ -1,5 +1,5 @@
 <div id="teaComp" class="commentComp">
-  <h1>Tea</h1>
+  <h2>Tea</h2>
   <div *ngFor = "let comment of commentsArr">
     <h3>{{comment.username}}</h3>
     <p>{{comment.comment}}</p>
@@ -8,7 +8,7 @@
   </div>
   <form>
     <h3>Do you have opinions about hot tea?</h3>
-    <textarea #teaComment type = "textarea" placeholder="Let the people know..."></textarea>
+    <textarea class="addComment" #teaComment type = "textarea" placeholder="Let the people know..."></textarea>
     <button type = "button" (click) = "sendTeaFetch(teaComment.value); teaComment.value = ''" mat-flat-button color="accent">Submit</button>
   </form>
 </div>

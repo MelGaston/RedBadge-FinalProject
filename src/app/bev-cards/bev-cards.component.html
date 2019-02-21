@@ -4,7 +4,7 @@
 
     <h2>My Hot Beverages</h2>
 
-    <button mat-flat-button color="accent" (click)="open(content)">+ Add To My List</button>
+    <button mat-flat-button color="accent" (click)="open(content)" id="addButton">+ Add To My List</button>
 
     <ng-template #content let-modal>
         <div class="modal-header">
@@ -44,7 +44,7 @@
             </form>
         </div>
     </ng-template>
-
+    
     <div *ngFor = "let card of cardArr" class="cardContainer">
         <h4>{{card.bevName}}</h4>
         <p><strong>Type of Beverage:</strong> {{card.type}}</p>
@@ -54,8 +54,10 @@
         <p><strong>Ingredients:</strong> {{card.ingredients}}</p>
         <p><strong>Flavor Profile:</strong> {{card.flavorProfile}}</p>
         <p><strong>Additional Notes:</strong><br/>{{card.notes}}</p><br/>
-        <button type = "button" mat-flat-button color="accent">Edit</button>
-        <button type = "button" mat-flat-button color="warn" (click)="open(delete)">Delete</button>
+        <div class="buttonRow">
+            <button type = "button" mat-flat-button color="accent">Edit</button>
+            <button type = "button" mat-flat-button color="warn" (click)="open(delete)">Delete</button>
+        </div>
         
         <ng-template #delete let-modal>
             <div class="modal-header">
@@ -65,10 +67,9 @@
                 </button>
             </div>
             <div class="modal-footer">
-                <button (click) = "modal.dismiss()">No</button>
-                <button cdk-focus-initial (click) = "sendDeleteFetch(card.id);modal.dismiss();">Yes</button>
+                <button mat-flat-button color="accent" (click) = "modal.dismiss()">No</button>
+                <button cdk-focus-initial mat-flat-button color="warn" (click) = "sendDeleteFetch(card.id);modal.dismiss();">Yes</button>
             </div>
         </ng-template>
     </div>
-    
 </div>

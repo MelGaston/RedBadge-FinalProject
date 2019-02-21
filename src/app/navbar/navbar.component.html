@@ -1,5 +1,5 @@
 <div class="navbar" id="mobile">
-  <img src="../../assets/hbh_logo.jpg" routerLink="/home" class="logo"/>
+  <img src="../../assets/White_TypeLock.png" routerLink="/home" class="logo"/>
   <button mat-icon-button [matMenuTriggerFor]="menu">
     <mat-icon>menu</mat-icon>
   </button>
@@ -14,7 +14,7 @@
     </button>
     <button mat-menu-item routerLink="/comments">
       <mat-icon>forum</mat-icon>
-      <span>Comments</span>
+      <span>Community</span>
     </button>
     <button mat-menu-item (click)="logout()">
       <mat-icon>exit_to_app</mat-icon>
@@ -23,9 +23,9 @@
   </mat-menu>
 </div>
 <div class="navbar" id="desktop">
-  <img src="../../assets/hbh_logo.jpg" routerLink="/home" class="logo"/>
+  <img src="../../assets/White_TypeLock.png" routerLink="/home" class="logo"/>
   <button mat-flat-button routerLink="/home">Home</button>
   <button mat-flat-button routerLink="/bevs">My Beverages</button>
-  <button mat-flat-button routerLink="/comments">Comments</button>
+  <button mat-flat-button routerLink="/comments">Community</button>
   <button mat-flat-button (click)="logout()">Logout</button>
 </div>
