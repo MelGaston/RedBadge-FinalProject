@@ -4,13 +4,28 @@
 
 body { 
   margin: 0;
+  background-color: #c2e3f2;
 }
 
 .example-card form {
   padding-top:2vh;
 }
 
+.mat-tab-label-container {
+  background-color:rgba(255,255,255,0.5);
+}
+
 .mat-tab-label {
   margin: 0 auto;
-  height: 7.5vh !important;
+  height: 8vh !important;
+}
+
+.mat-tab-label-content {
+  color: #333;
+  font-size: 1.5rem;
+}
+
+textarea {
+  border-radius: 0.25rem;
+  border:0.5px solid #333;
 }
