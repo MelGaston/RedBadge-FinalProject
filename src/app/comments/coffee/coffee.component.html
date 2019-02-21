@@ -4,14 +4,14 @@
     <h3>{{comment.username}}</h3>
     <p>{{comment.comment}}</p>
     <div *ngIf = "this.AdminStatus == 'true' || userName == comment.username">
-      <button type = "button" (click) = "open(content, comment.id)">Edit</button>
+      <button type = "button" (click) = "open(content, comment.id, comment.username)">Edit</button>
       <button type = "button" (click) = "deleteConfirm(comment.id)">Delete</button>
       </div>
   </div>
-  <form>
+  <form (submit) = "sendCoffeeFetch(coffeeComment.value); coffeeComment.value = ''">
     <h3>Do you have opinions about hot coffee?</h3>
     <textarea #coffeeComment type = "textarea" placeholder="Let the people know..."></textarea>
-    <button type = "button" (click) = "sendCoffeeFetch(coffeeComment.value); coffeeComment.value = ''" mat-flat-button color="accent">Submit</button>
+    <button type = "submit" mat-flat-button color="accent">Submit</button>
   </form>
 </div>
 

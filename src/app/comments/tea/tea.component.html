@@ -4,8 +4,8 @@
     <h3>{{comment.username}}</h3>
     <p>{{comment.comment}}</p>
     <div *ngIf = "this.AdminStatus == 'true' || userName == comment.username">
-      <button type = "button" mat -flat-button color = "accent"(click) = "open(content, comment.id)">Edit</button>
-      <button type = "button" mat -flat-button color = "warn"(click) = "deleteConfirm(comment.id)">Delete</button>
+      <button type = "button" mat-flat-button color = "accent"(click) = "open(content, comment.id, comment.username)">Edit</button>
+      <button type = "button" mat-flat-button color = "warn"(click) = "deleteConfirm(comment.id)">Delete</button>
     </div>
   </div>
   <form>
@@ -32,6 +32,7 @@
     </form>
   </div>
 </ng-template>
+
 <div id = "deleteConfirm" style = "display: none">
     <p>Are you sure you want to delete this card?</p>
     <button (click) = "sendDeleteFetch(this.commentId); deleteConfirm();">Yes</button>

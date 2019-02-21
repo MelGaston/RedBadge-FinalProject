@@ -57,7 +57,7 @@
         <p><strong>Ingredients:</strong> {{card.ingredients}}</p>
         <p><strong>Flavor Profile:</strong> {{card.flavorProfile}}</p>
         <p><strong>Additional Notes:</strong><br/>{{card.notes}}</p><br/>
-        <button type = "button" mat-flat-button color="accent">Edit</button>
+        <button type = "button" mat-flat-button color="accent" (click) = "open(content, card.id);">Edit</button>
         <button type = "button" mat-flat-button color="warn" (click)="open(delete)">Delete</button>
         
         <ng-template #delete let-modal>

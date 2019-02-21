@@ -23,11 +23,12 @@ export class MiscBevComponent implements OnInit {
     this.sendMiscGet()
   }
 
-  open(content?, commentId?: number){
+  open(content?, commentId?: number, username?){
     if(content){
       this.modalService.open(content, {ariaLabelledBy: "modal-basic-title"}).result;
       console.log("edit pushed")
       this.commentId = commentId
+      this.userName = username
       console.log(commentId, this.commentId);
     } else {
       this.modalService.dismissAll();
@@ -39,7 +40,7 @@ export class MiscBevComponent implements OnInit {
     console.log("update pushed", commentEdit, this.commentId)
     let commentObj: Comments = {
       commentdata: {
-        username: sessionStorage.getItem("username"),
+        username: this.userName,
         comment: commentEdit,
         typeOf: "Misc",
         votes: 0

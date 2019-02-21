@@ -4,7 +4,7 @@
     <h3>{{comment.username}}</h3>
     <p>{{comment.comment}}</p>
     <div *ngIf = "this.AdminStatus == 'true' || userName == comment.username">
-        <button type = "button" (click) = "open(content, comment.id)">Edit</button>
+        <button type = "button" (click) = "open(content, comment.id, comment.username)">Edit</button>
         <button type = "button" (click) = "deleteConfirm(comment.id)">Delete</button>
       </div>
   </div>
