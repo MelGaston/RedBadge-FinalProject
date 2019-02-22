@@ -11,7 +11,7 @@ import {UserLogin} from "../models/userLogin";
 const httpOptions = {
   headers: new HttpHeaders({
     "Content-Type": "application/json",
-    "Authorization" : sessionStorage.getItem("token")
+    //"Authorization" : sessionStorage.getItem("token")
   })
 }
 

@@ -128,6 +128,7 @@ export class AuthComponent implements OnInit {
     if(sessionStorage.getItem("token") !== "") {
       console.log(sessionStorage.getItem("token"));
       this.router.navigate(['/home']);
+      location.reload();
     }
   }
 
