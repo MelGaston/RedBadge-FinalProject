@@ -12,10 +12,10 @@ import {CommentsService} from "../../services/comments.service";
   styleUrls: ['./tea.component.css']
 })
 export class TeaComponent implements OnInit {
-  private commentsArr = [];
+  public commentsArr = [];
   private userName;
   private AdminStatus;
-  private commentId: number;
+  public commentId: number;
   constructor(private commentsService: CommentsService, private modalService: NgbModal) { }
 
   ngOnInit() {

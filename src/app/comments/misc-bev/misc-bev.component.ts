@@ -12,11 +12,11 @@ import {CommentsService} from "../../services/comments.service";
   styleUrls: ['./misc-bev.component.css']
 })
 export class MiscBevComponent implements OnInit {
-  private commentsArr = []
+  public commentsArr = []
   private userName;
   private AdminStatus;
-  private commentId;
-  constructor(private commentsService: CommentsService, private modalService: NgbModal, private authComponent: AuthComponent) { }
+  public commentId;
+  constructor(private commentsService: CommentsService, private modalService: NgbModal) { }
 
   ngOnInit() {
     this.userName = sessionStorage.getItem("username")
