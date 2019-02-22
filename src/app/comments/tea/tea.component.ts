@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
+import {AuthComponent} from "../../auth/auth.component";
 import {Comments} from "../../models/comments.model";
 import {CommentsService} from "../../services/comments.service";
 
@@ -19,7 +20,8 @@ export class TeaComponent implements OnInit {
 
   ngOnInit() {
     this.userName = sessionStorage.getItem("username")
-    this.AdminStatus = sessionStorage.getItem("adminStatus")
+    this.AdminStatus = sessionStorage.getItem("adminStatus");
+    console.log(this.AdminStatus, this.commentsService.adminStatus);
     this.sendTeaGet()
   }
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import {AuthService} from "../services/auth.service";
+import {CommentsService} from "../services/comments.service";
 import {User} from "../models/user.model"
 import {UserLogin} from "../models/userLogin";
 
@@ -12,7 +13,7 @@ import {UserLogin} from "../models/userLogin";
 })
 export class AuthComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private commentsService: CommentsService, private router: Router) { }
 
   ngOnInit() {
     this.setSessionToken()
@@ -67,9 +68,15 @@ export class AuthComponent implements OnInit {
       sessionStorage.setItem("username", data.user.username)
       console.log(data);
       this.goHome();
+      console.log(data.user.adminStatus);
+      this.sendToCommentService(data.user.adminStatus);
     })
     console.log("sessionToken token", sessionStorage.getItem("token"));
     
+  }
+
+  sendToCommentService(adminStatus){
+    this.commentsService.getAdminStatus(adminStatus);
   }
 
   sendSignup(firstName: string, lastName: string, email: string, username:string, password: string, confirmPassword: string): any {

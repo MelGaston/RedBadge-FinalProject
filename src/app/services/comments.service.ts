@@ -23,6 +23,7 @@ private handleError<T> (operation = 'operation', result?: T) {
     return of(result as T);
   };
 }
+public adminStatus;
   constructor(private http: HttpClient) { }
 
   commentsPostFetch(comment: Comments): any{
@@ -39,6 +40,12 @@ private handleError<T> (operation = 'operation', result?: T) {
     return this.http.put<Comments>(`${this.baseURL}comment/update/${commentId}`, comment, httpOptions).pipe(
       catchError(this.handleError("commentsUpdateFetch"))
     )
+  }
+
+  getAdminStatus(adminStatus){
+    this.adminStatus = adminStatus;
+    console.log(this.adminStatus);
+    return this.adminStatus;
   }
 
   commentsGetFetch(): any{

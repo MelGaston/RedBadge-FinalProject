@@ -41,7 +41,7 @@ import { HomeComponent } from './home/home.component';
     NgbModule
   ],
   entryComponents: [],
-  providers: [AuthService, BevCardService, CommentsService, HttpClient],
+  providers: [AuthService, BevCardService, CommentsService, HttpClient, AuthComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

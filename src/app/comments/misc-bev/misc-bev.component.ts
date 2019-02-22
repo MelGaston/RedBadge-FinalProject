@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
+import {AuthComponent} from "../../auth/auth.component";
 import {Comments} from "../../models/comments.model";
 import {CommentsService} from "../../services/comments.service";
 
@@ -15,11 +16,11 @@ export class MiscBevComponent implements OnInit {
   private userName;
   private AdminStatus;
   private commentId;
-  constructor(private commentsService: CommentsService, private modalService: NgbModal) { }
+  constructor(private commentsService: CommentsService, private modalService: NgbModal, private authComponent: AuthComponent) { }
 
   ngOnInit() {
     this.userName = sessionStorage.getItem("username")
-    this.AdminStatus = sessionStorage.getItem("adminStatus")
+    this.AdminStatus = sessionStorage.getItem("adminStatus");
     this.sendMiscGet()
   }
 
