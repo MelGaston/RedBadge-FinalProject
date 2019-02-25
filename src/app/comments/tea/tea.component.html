@@ -5,14 +5,16 @@
     <p>{{comment.comment}}</p>
     <div *ngIf = "this.AdminStatus == 'true' || userName == comment.username">
       <button type = "button" mat-flat-button color = "accent"(click) = "open(content, comment.id, comment.username)">Edit</button>
-      <button type = "button" mat-flat-button color = "warn"(click) = "deleteConfirm(comment.id)">Delete</button>
+      <button type = "button" mat-flat-button color = "warn" (click) = "open(delete,comment.id)">Delete</button>
     </div>
   </div>
-  <form>
-    <h3>Do you have opinions about hot tea?</h3>
-    <textarea class="addComment" #teaComment type = "textarea" placeholder="Let the people know..."></textarea>
-    <button type = "button" (click) = "sendTeaFetch(teaComment.value); teaComment.value = ''" mat-flat-button color="accent">Submit</button>
-  </form>
+  <div class="addComment">
+    <form>
+      <h3>Do you have opinions about hot tea?</h3>
+      <textarea #teaComment type = "textarea" placeholder="Let the people know..."></textarea>
+      <button type = "button" (click) = "sendTeaFetch(teaComment.value); teaComment.value = ''" mat-flat-button color="accent">Submit</button>
+    </form>
+  </div>
 </div>
 
 <ng-template #content let-modal>
@@ -24,8 +26,7 @@
   </div>
   <div class = "modal-body">
     <form (submit) = "sendCommentUpdate(commentEdit.value); false; open(); commentEdit.value = ''">
-      <label>Edit Message Here</label>
-      <input type = "textarea" #commentEdit/>
+      <textarea #commentEdit placeholder="Let the people know..."></textarea>
       <div class = "modal-footer">
         <button mat-flat-button color = "accent" type = "submit">Update</button>
       </div>
@@ -33,8 +34,22 @@
   </div>
 </ng-template>
 
-<div id = "deleteConfirm" style = "display: none">
+<ng-template #delete let-modal class="deleteModal">
+  <div class="modal-header">
+    <h4>Delete Comment</h4>
+    <button type = "button" class = "close" aria-label = "Close" (click) = "modal.dismiss()">
+      <span aria-hidden  = "true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Are you sure you want to delete this card?</p>
+    <button mat-flat-button color = "accent" (click) = "modal.dismiss()">No</button>
+    <button mat-flat-button color = "warn" (click) = "sendDeleteFetch(this.commentId); modal.dismiss();">Yes</button>
+  </div>
+</ng-template>
+
+<!-- <div id = "deleteConfirm" style = "display: none">
     <p>Are you sure you want to delete this card?</p>
     <button (click) = "sendDeleteFetch(this.commentId); deleteConfirm();">Yes</button>
     <button (click) = "deleteConfirm()">No</button>
-</div>
+</div> -->

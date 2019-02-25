@@ -26,6 +26,8 @@ body {
 }
 
 textarea {
+  width:100% !important;
   border-radius: 0.25rem;
   border:0.5px solid #333;
+  padding:1vh;
 }
