@@ -52,7 +52,7 @@ export class AuthComponent implements OnInit {
     event.preventDefault();
     if(username == "" || password == ""){
       document.getElementById("warningDiv").style.display = "block";
-      document.getElementById("warning").innerText  = "Please fill in all fields before trying to log in. Thanks! 😀";
+      document.getElementById("warning").innerText  = "Please fill in all fields.";
       return
     }
     let user: UserLogin = {
@@ -82,8 +82,6 @@ export class AuthComponent implements OnInit {
   sendSignup(firstName: string, lastName: string, email: string, username:string, password: string, confirmPassword: string): any {
     event.preventDefault();
 
-    let warningDiv = document.getElementById("warningDiv");
-    let warning = document.getElementById("warning");
     let user: User = {
       user:{
         firstName: firstName,
@@ -96,13 +94,13 @@ export class AuthComponent implements OnInit {
     }
 
     if(password != confirmPassword){
-      warningDiv.style.display = "block";
-      warning.innerText = "Your passwords do not match, please try again";
+      document.getElementById("warningSignDiv").style.display = "block";
+      document.getElementById("warningSign").innerText = "Your passwords do not match.";
       return
     }
     if(firstName == "" || lastName == "" || email == "" || username == "" || password == "" || confirmPassword == ""){
-      warningDiv.style.display = "block";
-      warning.innerText = "Please fill all fields before submitting";
+      document.getElementById("warningSignDiv").style.display = "block";
+      document.getElementById("warningSign").innerText = "Please fill in all fields.";
       return
     }
     this.authService.signupFetch(user)
@@ -121,7 +119,9 @@ export class AuthComponent implements OnInit {
 
   hideWarning(){
     document.getElementById("warningDiv").style.display = "none";
-    document.getElementById("warning").innerText  = "";
+    document.getElementById("warningSignDiv").style.display = "none";
+    document.getElementById("warning").innerText = "";
+    document.getElementById("warningSign").innerText  = "";
   }
 
   goHome() {
