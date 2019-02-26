@@ -21,8 +21,9 @@
 
 #homeContainer {
     display: inline-block;
-    width:60%;
+    width: 60%;
     margin: 2%;
+    vertical-align: top;
 }
 
 #authContainer {

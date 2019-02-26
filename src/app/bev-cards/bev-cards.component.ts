@@ -42,9 +42,9 @@ export class BevCardsComponent implements OnInit {
   //   @Input() name: any;
 
   beverages: BevType[] = [
-    {value: 'coffee', viewValue: 'Coffee'},
-    {value: 'tea', viewValue: 'Tea'},
-    {value: 'miscellaneous', viewValue: 'Other'}
+    {value: 'Coffee', viewValue: 'Coffee'},
+    {value: 'Tea', viewValue: 'Tea'},
+    {value: 'Other', viewValue: 'Other'}
   ];
 
   sizes: ServSize[] = [

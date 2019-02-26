@@ -31,3 +31,16 @@ textarea {
   border:0.5px solid #333;
   padding:1vh;
 }
+
+.modal-open .modal {
+  z-index:1050;
+}
+
+.cdk-overlay-container {
+  z-index:1051 !important;
+}
+
+.mat-form-field {
+  display: block;
+  width:100%;
+}
