@@ -15,17 +15,9 @@
         </div>
         <div class="modal-body">
             <form (submit) = "sendCardPost(name.value, temp.value, time.value, servingSize.value, ingredients.value, flavor.value, type.value, notes.value); false; name.value = ''; temp.value = ''; time.value = ''; servingSize.value = ''; ingredients.value = ''; flavor.value = ''; type.value = ''; notes.value = ''; modal.dismiss('Cross click');">
-                <!-- <label for="name">Beverage Name</label>
-                <input required id = "name" #name type="text"/><br/> -->
                 <mat-form-field>
                     <input matInput #name id="name" type="text" placeholder="Beverage Name"/>
                 </mat-form-field>
-                <!-- <label for="type">Type of Beverage</label>
-                    <select id = "type" #type>
-                        <option value="Tea">Tea</option>
-                        <option value="Coffee">Coffee</option>
-                        <option value="Other">Other</option>
-                    </select><br/> -->
                 <mat-form-field>
                     <mat-select #type id="type" placeholder="Type of Beverage">
                         <mat-option value="Tea">Tea</mat-option>
@@ -33,25 +25,14 @@
                         <mat-option value="Other">Other</mat-option>
                     </mat-select>
                 </mat-form-field>
-                <!-- <label for="temp">Temperature</label>
-                    <input required id = "temp" #temp type="number"/><br/> -->
                 <mat-form-field>
                     <input matInput #temp id="temp" type="number" placeholder="Temperature"/>
                     <span matSuffix>ºF</span>
                 </mat-form-field>
-                <!-- <label for="time">Prep Time</label>
-                <input required id = "time" #time type="number"/><br/> -->
                 <mat-form-field>
                     <input matInput #time type="number" placeholder="Prep Time"/>
                     <span matSuffix>Minutes</span>
                 </mat-form-field>
-                <!-- <label for="servingSize">Serving Size</label>
-                <select id = "servingSize" #servingSize placeholder="Serving Size">
-                    <option value="8">8 oz.</option>
-                    <option value="12">12 oz.</option>
-                    <option value="16">16 oz.</option>
-                    <option value="20">20 oz.</option>
-                </select><br/> -->
                 <mat-form-field>
                     <mat-select #servingSize id="servingSize" placeholder="Serving Size">
                         <mat-option value="8">8 oz.</mat-option>
@@ -60,18 +41,12 @@
                         <mat-option value="20">20 oz.</mat-option>
                     </mat-select>
                 </mat-form-field>
-                <!-- <label for="ingredients">Ingredients</label>
-                <input required id = "ingredients" type = "textarea" #ingredients/><br/> -->
                 <mat-form-field>
                     <input matInput #ingredients id="ingredients" type="text" placeholder="Ingredients"/>
                 </mat-form-field>
-                <!-- <label for="flavor">Flavor Profile</label>
-                <input required id = "flavor" #flavor type="text"/><br/> -->
                 <mat-form-field>
                     <input matInput #flavor id="flavor" type="text" placeholder="Flavor Profile"/>
                 </mat-form-field>
-                <!-- <label for="notes">Additional Information</label>
-                <input type = "textarea" id = "notes" #notes/> -->
                 <mat-form-field>
                     <textarea matInput #notes id="notes" placeholder="Additional Information"></textarea>
                 </mat-form-field>
